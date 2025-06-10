@@ -1,23 +1,25 @@
 package iterator;
 
+import java.util.List;
+
 public class SimpleIterator implements PlayListIterator<String>{
 
-    PlayList list;
+    List<String> list;
     int current;
 
-    public SimpleIterator(PlayList list){
+    public SimpleIterator(List list){
         this.list = list;
         this.current = 0;
     }
 
     @Override
     public boolean hasNext() {
-        return current < list.getSongsList().size();
+        return current < list.size();
     }
 
     @Override
     public String next() {
-        String returnedSong = list.getSongsList().get(current);
+        String returnedSong = list.get(current);
         current++;
         return returnedSong;
     }

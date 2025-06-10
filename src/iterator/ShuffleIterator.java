@@ -1,27 +1,28 @@
 package iterator;
 
+import java.util.List;
 import java.util.random.RandomGenerator;
 
 public class ShuffleIterator implements PlayListIterator<String>{
 
-    private PlayList playList;
+    private final List<String> playList;
     private final RandomGenerator randomGenerator = RandomGenerator.getDefault();
 
-    public ShuffleIterator(PlayList playlist){
+    public ShuffleIterator(List<String> playlist){
         this.playList = playlist;
     }
 
     @Override
     public boolean hasNext() {
-        return !playList.getSongsList().isEmpty();
+        return !playList.isEmpty();
     }
 
     @Override
     public String next() {
-        return playList.getSongsList().remove(randomGenerator.nextInt(getSize()));
+        return playList.remove(randomGenerator.nextInt(getSize()));
     }
 
     private int getSize(){
-        return playList.getSongsList().size();
+        return playList.size();
     }
 }

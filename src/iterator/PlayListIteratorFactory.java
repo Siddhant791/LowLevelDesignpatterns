@@ -13,10 +13,10 @@ public class PlayListIteratorFactory {
     public PlayListIterator<String> iterator(String type){
         if (type.equalsIgnoreCase("Simple"))
         {
-            return new SimpleIterator(new PlayList(new ArrayList<>(playlist.getSongsList())));
+            return new SimpleIterator(new ArrayList<>(playlist.getSongsList()));
         }
         else if (type.equalsIgnoreCase("Shuffle")) {
-            return new ShuffleIterator(new PlayList(new ArrayList<>(playlist.getSongsList())));
+            return new ShuffleIterator(new ArrayList<>(playlist.getSongsList()));
         }
         else {
             throw new RuntimeException("Not a correct type of iterator type");

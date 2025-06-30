@@ -1,3 +1,7 @@
+import Decorator.Dosa;
+import Decorator.MasalaDosa;
+import Decorator.Mushroom;
+import Decorator.Paneer;
 import iterator.IteratorUtils;
 import iterator.PlayListIterator;
 import iterator.PlayListIteratorFactory;
@@ -26,25 +30,35 @@ public class Main {
 
         // PUB / SUB model
 
-        Publisher p1 = new PaperPublisher("Times Of India");
-        Topic news = new Topic("News");
-        Topic sports = new Topic("Sports");
-        Subscriber siddhant = new EmailSubscriber("Siddhant");
-        Subscriber tanya = new SmsSubscriber("Tanya");
-        Subscriber harish = new SmsSubscriber("Harish");
+//        Publisher p1 = new PaperPublisher("Times Of India");
+//        Topic news = new Topic("News");
+//        Topic sports = new Topic("Sports");
+//        Subscriber siddhant = new EmailSubscriber("Siddhant");
+//        Subscriber tanya = new SmsSubscriber("Tanya");
+//        Subscriber harish = new SmsSubscriber("Harish");
+//
+//        siddhant.subscribe(sports);
+//        siddhant.subscribe(news);
+//        harish.subscribe(sports);
+//
+//        p1.publish(news, new Message("Donald trump wom the election"));
+//
+//        System.out.println("First message is published and subscribed successfully");
+//
+//        p1.publish(sports, new Message("India won the world cup"));
+//
+//        harish.unsubscribe(sports);
+//
+//        p1.publish(sports, new Message("China won gold medal in long jump in olymics"));
 
-        siddhant.subscribe(sports);
-        siddhant.subscribe(news);
-        harish.subscribe(sports);
 
-        p1.publish(news, new Message("Donald trump wom the election"));
+        // Decorator pattern
 
-        System.out.println("First message is published and subscribed successfully");
+        Dosa masalaDosa = new MasalaDosa();
+        Dosa PaneermasalaDosa = new Paneer(masalaDosa);
+        Dosa MushroomPaneerMasalaDosa = new Mushroom(PaneermasalaDosa);
 
-        p1.publish(sports, new Message("India won the world cup"));
-
-        harish.unsubscribe(sports);
-
-        p1.publish(sports, new Message("China won gold medal in long jump in olymics"));
+        System.out.println(MushroomPaneerMasalaDosa.content());
+        System.out.println(MushroomPaneerMasalaDosa.price());
     }
 }
